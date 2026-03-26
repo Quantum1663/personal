@@ -226,35 +226,29 @@ p {
 }
 
 .proposal-card {
-  display: grid;
-  grid-template-columns: 0.92fr 1.08fr;
+  display: block;
   width: min(980px, 100%);
   overflow: hidden;
 }
 
-.proposal-media {
-  position: relative;
-  min-height: 32rem;
-}
-
-.proposal-media::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent, rgba(77, 45, 51, 0.18));
-}
-
-.proposal-media img {
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
 .proposal-content {
-  padding: 2.2rem;
+  position: relative;
+  padding: 3rem 2.2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.proposal-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.72), transparent 44%),
+    radial-gradient(circle at bottom right, rgba(247, 187, 150, 0.16), transparent 34%);
+  pointer-events: none;
 }
 
 .proposal-title {
@@ -264,6 +258,32 @@ p {
 .proposal-text {
   max-width: 34rem;
   margin-top: 1.15rem;
+}
+
+.proposal-ornament {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1.1rem;
+}
+
+.ornament-line {
+  width: 4.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(182, 81, 103, 0.55), transparent);
+}
+
+.ornament-heart {
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  color: var(--rose-deep);
+  background: rgba(255, 248, 243, 0.78);
+  border: 1px solid rgba(182, 81, 103, 0.2);
+  box-shadow: 0 10px 20px rgba(113, 76, 82, 0.1);
+  font-size: 1rem;
 }
 
 .proposal-plea {
@@ -587,16 +607,11 @@ p {
 }
 
 @media (max-width: 900px) {
-  .proposal-card,
   .hero,
   .voice-note,
   .feature-grid,
   .video-grid {
     grid-template-columns: 1fr;
-  }
-
-  .proposal-media {
-    min-height: 22rem;
   }
 
   .hero {
@@ -632,20 +647,6 @@ p {
   .secret-note,
   .finale {
     padding: 1.2rem;
-  }
-
-  .proposal-card {
-    grid-template-columns: 1fr;
-  }
-
-  .proposal-media {
-    min-height: 13rem;
-    max-height: 34vh;
-  }
-
-  .proposal-media img {
-    height: 100%;
-    object-position: center 28%;
   }
 
   .proposal-content {
@@ -730,11 +731,6 @@ p {
 
   .proposal-card {
     border-radius: 24px;
-  }
-
-  .proposal-media {
-    min-height: 11rem;
-    max-height: 28vh;
   }
 
   .proposal-content {
