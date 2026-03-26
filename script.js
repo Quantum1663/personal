@@ -4,7 +4,7 @@ const yesButton = document.getElementById("yesButton");
 const noButton = document.getElementById("noButton");
 const proposalText = document.getElementById("proposalText");
 const proposalPlea = document.getElementById("proposalPlea");
-const mascotBubble = document.getElementById("mascotBubble");
+const proposalEmojiBurst = document.getElementById("proposalEmojiBurst");
 const lineButton = document.getElementById("lineButton");
 const musicButton = document.getElementById("musicButton");
 const lineBox = document.getElementById("lineBox");
@@ -66,10 +66,27 @@ function floatPieces(total) {
   }
 }
 
+function showProposalReactions() {
+  if (!proposalEmojiBurst) {
+    return;
+  }
+
+  const emojis = ["♥", "✨", "🥺", "💖", "🌸"];
+
+  for (let i = 0; i < 6; i += 1) {
+    const emoji = document.createElement("span");
+    emoji.className = "proposal-emoji";
+    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    emoji.style.left = `${10 + Math.random() * 80}%`;
+    emoji.style.animationDelay = `${i * 0.05}s`;
+    proposalEmojiBurst.appendChild(emoji);
+    setTimeout(() => emoji.remove(), 1700);
+  }
+}
+
 let noClickCount = 0;
 
 yesButton.addEventListener("click", () => {
-  mascotBubble.textContent = "batak is blushing now";
   proposalGate.style.display = "none";
   mainContent.classList.remove("shell-hidden");
   memoryLane.classList.add("is-visible");
@@ -81,7 +98,6 @@ yesButton.addEventListener("click", () => {
 noButton.addEventListener("click", () => {
   proposalText.textContent = proposalReplies[noClickCount % proposalReplies.length];
   proposalPlea.textContent = proposalPleas[noClickCount % proposalPleas.length];
-  mascotBubble.textContent = noClickCount > 1 ? "tiny duck is asking again" : "batak says please be nice";
   proposalPlea.classList.add("is-visible");
   noClickCount += 1;
 
@@ -96,6 +112,7 @@ noButton.addEventListener("click", () => {
   noButton.style.transform = `translate(${moveX}px, ${moveY}px)`;
   noButton.textContent = noClickCount > 1 ? "No, really?" : "No, wait";
 
+  showProposalReactions();
   floatPieces(6);
 });
 
