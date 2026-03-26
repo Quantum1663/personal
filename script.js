@@ -4,6 +4,7 @@ const yesButton = document.getElementById("yesButton");
 const noButton = document.getElementById("noButton");
 const proposalText = document.getElementById("proposalText");
 const proposalPlea = document.getElementById("proposalPlea");
+const mascotBubble = document.getElementById("mascotBubble");
 const lineButton = document.getElementById("lineButton");
 const musicButton = document.getElementById("musicButton");
 const lineBox = document.getElementById("lineBox");
@@ -68,6 +69,7 @@ function floatPieces(total) {
 let noClickCount = 0;
 
 yesButton.addEventListener("click", () => {
+  mascotBubble.textContent = "batak is blushing now";
   proposalGate.style.display = "none";
   mainContent.classList.remove("shell-hidden");
   memoryLane.classList.add("is-visible");
@@ -79,6 +81,7 @@ yesButton.addEventListener("click", () => {
 noButton.addEventListener("click", () => {
   proposalText.textContent = proposalReplies[noClickCount % proposalReplies.length];
   proposalPlea.textContent = proposalPleas[noClickCount % proposalPleas.length];
+  mascotBubble.textContent = noClickCount > 1 ? "tiny duck is asking again" : "batak says please be nice";
   proposalPlea.classList.add("is-visible");
   noClickCount += 1;
 
