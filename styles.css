@@ -634,6 +634,24 @@ p {
     padding: 1.2rem;
   }
 
+  .proposal-card {
+    grid-template-columns: 1fr;
+  }
+
+  .proposal-media {
+    min-height: 13rem;
+    max-height: 34vh;
+  }
+
+  .proposal-media img {
+    height: 100%;
+    object-position: center 28%;
+  }
+
+  .proposal-content {
+    padding: 1.15rem;
+  }
+
   h1 {
     font-size: clamp(2.4rem, 12vw, 4.2rem);
   }
@@ -641,6 +659,15 @@ p {
   .proposal-title,
   .hero-copy h1 {
     max-width: 100%;
+  }
+
+  .proposal-text {
+    margin-top: 0.8rem;
+  }
+
+  .proposal-plea {
+    min-height: 1.4rem;
+    margin-top: 0.6rem;
   }
 
   .proposal-actions,
@@ -693,5 +720,28 @@ p {
   .story-card {
     min-height: auto;
     padding: 1.1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .proposal-gate {
+    padding: 0.7rem;
+  }
+
+  .proposal-card {
+    border-radius: 24px;
+  }
+
+  .proposal-media {
+    min-height: 11rem;
+    max-height: 28vh;
+  }
+
+  .proposal-content {
+    padding: 1rem;
+  }
+
+  .proposal-title {
+    font-size: clamp(2.1rem, 11vw, 3.2rem);
   }
 }
