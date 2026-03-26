@@ -5,7 +5,7 @@ const noButton = document.getElementById("noButton");
 const proposalText = document.getElementById("proposalText");
 const proposalPlea = document.getElementById("proposalPlea");
 const lineButton = document.getElementById("lineButton");
-const confettiButton = document.getElementById("confettiButton");
+const musicButton = document.getElementById("musicButton");
 const lineBox = document.getElementById("lineBox");
 const complimentButton = document.getElementById("complimentButton");
 const complimentBox = document.getElementById("complimentBox");
@@ -31,13 +31,12 @@ const proposalPleas = [
 ];
 
 const lines = [
-  "Firdos, you have this quiet kind of beauty that keeps staying on my mind.",
-  "If I had to describe you simply: lovely face, lovely energy, lovely heart.",
   "From your batak: you are unfairly adorable and I hope you know that.",
   "Some people take good photos. You somehow make every frame feel softer.",
-  "This page is my proof that you inspire effort without even trying.",
+  "If admiration had a homepage, it would probably look something like this.",
+  "You have this quiet kind of beauty that keeps staying on my mind.",
   "You look like the kind of memory people never really move on from.",
-  "If admiration had a homepage, it would probably look something like this."
+  "If I had to describe you simply: lovely face, lovely energy, lovely heart."
 ];
 
 const compliments = [
@@ -45,9 +44,8 @@ const compliments = [
   "You are exactly the kind of girl a batak would fall hopelessly for.",
   "Your smile has main-character energy.",
   "You somehow look soft and stunning at the same time.",
-  "Being this lovely should probably require permission.",
-  "You have the kind of face people remember for a long time.",
-  "Everything about you feels easy to admire."
+  "Everything about you feels easy to admire.",
+  "You have the kind of face people remember for a long time."
 ];
 
 function randomItem(items) {
@@ -58,7 +56,7 @@ function floatPieces(total) {
   for (let i = 0; i < total; i += 1) {
     const piece = document.createElement("span");
     piece.className = "floating";
-    piece.textContent = i % 3 === 0 ? "♥" : i % 3 === 1 ? "✦" : "❀";
+    piece.textContent = i % 3 === 0 ? "\u2665" : i % 3 === 1 ? "\u273f" : "\u2726";
     piece.style.left = `${10 + Math.random() * 80}%`;
     piece.style.top = `${70 + Math.random() * 12}%`;
     piece.style.setProperty("--drift", `${-40 + Math.random() * 80}px`);
@@ -74,6 +72,7 @@ yesButton.addEventListener("click", () => {
   mainContent.classList.remove("shell-hidden");
   memoryLane.classList.add("is-visible");
   floatPieces(18);
+  updateMemoryLane();
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
@@ -102,16 +101,97 @@ lineButton.addEventListener("click", () => {
   floatPieces(8);
 });
 
-confettiButton.addEventListener("click", () => {
-  floatPieces(14);
-});
-
 if (complimentButton && complimentBox) {
   complimentButton.addEventListener("click", () => {
     complimentBox.textContent = randomItem(compliments);
     floatPieces(5);
   });
 }
+
+let audioContext;
+let audioPlaying = false;
+let currentTimeouts = [];
+let activeOscillators = [];
+
+function stopMelody() {
+  currentTimeouts.forEach((timeoutId) => clearTimeout(timeoutId));
+  currentTimeouts = [];
+  activeOscillators.forEach((oscillator) => {
+    try {
+      oscillator.stop();
+    } catch (error) {
+      // Ignore already-stopped oscillators.
+    }
+  });
+  activeOscillators = [];
+}
+
+function playTone(frequency, startAt, duration, gainValue) {
+  const oscillator = audioContext.createOscillator();
+  const gainNode = audioContext.createGain();
+
+  oscillator.type = "triangle";
+  oscillator.frequency.value = frequency;
+  gainNode.gain.setValueAtTime(0.0001, startAt);
+  gainNode.gain.exponentialRampToValueAtTime(gainValue, startAt + 0.02);
+  gainNode.gain.exponentialRampToValueAtTime(0.0001, startAt + duration);
+
+  oscillator.connect(gainNode);
+  gainNode.connect(audioContext.destination);
+  oscillator.start(startAt);
+  oscillator.stop(startAt + duration + 0.03);
+  activeOscillators.push(oscillator);
+}
+
+function scheduleMelody() {
+  const notes = [
+    [392, 0, 0.42],
+    [440, 0.44, 0.42],
+    [523.25, 0.88, 0.52],
+    [440, 1.45, 0.38],
+    [392, 1.86, 0.5],
+    [349.23, 2.4, 0.48],
+    [392, 2.92, 0.7]
+  ];
+
+  const loopLength = 4.2;
+  let cycle = 0;
+
+  while (cycle < 8 && audioPlaying) {
+    notes.forEach(([frequency, offset, duration]) => {
+      playTone(frequency, audioContext.currentTime + cycle * loopLength + offset, duration, 0.028);
+    });
+    cycle += 1;
+  }
+
+  const timeoutId = setTimeout(() => {
+    if (audioPlaying) {
+      scheduleMelody();
+    }
+  }, loopLength * 1000 * 4);
+  currentTimeouts.push(timeoutId);
+}
+
+musicButton.addEventListener("click", async () => {
+  if (!audioContext) {
+    audioContext = new window.AudioContext();
+  }
+
+  if (audioContext.state === "suspended") {
+    await audioContext.resume();
+  }
+
+  if (!audioPlaying) {
+    audioPlaying = true;
+    musicButton.textContent = "Pause our vibe";
+    scheduleMelody();
+    floatPieces(6);
+  } else {
+    audioPlaying = false;
+    musicButton.textContent = "Play our vibe";
+    stopMelody();
+  }
+});
 
 function updateMemoryLane() {
   if (mainContent.classList.contains("shell-hidden")) {
