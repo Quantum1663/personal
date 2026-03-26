@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firdos, With Love</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+    <div class="stars"></div>
+  </div>
+
+  <div id="memoryLane" class="memory-lane" aria-hidden="true">
+    <div class="memory-lane-label">Memory Lane</div>
+    <div class="memory-lane-track">
+      <div id="memoryLaneFill" class="memory-lane-fill"></div>
+    </div>
+  </div>
+
+  <section id="proposalGate" class="proposal-gate">
+    <div class="proposal-card panel">
+      <p class="tag">A question from Sami</p>
+      <h1 class="proposal-title">Firdos Ansari, will you let me keep loving you a little more every day?</h1>
+      <p id="proposalText" class="proposal-text">
+        I made you a tiny world on the internet, from your very own batak, but first you have to answer one very important question.
+      </p>
+      <p id="proposalPlea" class="proposal-plea" aria-live="polite"></p>
+      <div class="proposal-actions">
+        <button id="yesButton" class="button primary proposal-button">Yes, of course</button>
+        <button id="noButton" class="button secondary proposal-button">No, wait</button>
+      </div>
+    </div>
+  </section>
+
+  <main id="mainContent" class="shell shell-hidden">
+    <section class="hero panel">
+      <div class="hero-copy">
+        <p class="tag">For Firdos Ansari</p>
+        <h1>A little corner of the internet made only for you.</h1>
+        <p class="intro">
+          Some people are easy to admire from far away. You are different.
+          You are the kind of person who makes moments softer, smiles brighter,
+          and ordinary days feel worth remembering. So I made this page for you.
+        </p>
+        <div class="hero-actions">
+          <button id="lineButton" class="button primary">Read something from Sami</button>
+          <button id="confettiButton" class="button secondary">Make it sparkle</button>
+        </div>
+        <p id="lineBox" class="line-box" aria-live="polite">
+          Firdos, if this page feels warm, pretty, and a little full of love, then it is doing its job.
+        </p>
+      </div>
+
+      <div class="hero-polaroids">
+        <article class="polaroid polaroid-main">
+          <img class="portrait-center" src="WhatsApp Image 2026-03-26 at 21.30.13 (3).jpeg" alt="Firdos smiling">
+          <span>batak's favorite view</span>
+        </article>
+        <article class="polaroid polaroid-side">
+          <img class="portrait-top" src="WhatsApp Image 2026-03-26 at 21.30.14.jpeg" alt="Firdos portrait">
+          <span>effortlessly beautiful</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel note-grid">
+      <article class="note-card">
+        <p class="mini-tag">What I Notice</p>
+        <h2>You have a beautiful way of just being you.</h2>
+        <p>
+          The kind of presence that stays with people. The kind of face,
+          energy, and warmth that makes memories feel easy to keep.
+        </p>
+      </article>
+
+      <article class="note-card accent-card">
+        <p class="mini-tag">From Sami</p>
+        <h2>This whole page is basically me saying you matter to me.</h2>
+        <p>
+          In the soft moments, in the funny ones, in the random captured seconds,
+          you still somehow manage to look like someone worth writing about.
+        </p>
+      </article>
+
+      <article class="note-card">
+        <p class="mini-tag">Tiny Truth</p>
+        <h2>You make things feel lighter.</h2>
+        <p>
+          That is rare. That is lovely. That is very, very you.
+        </p>
+      </article>
+    </section>
+
+    <section class="memory-section">
+      <div class="section-head">
+        <p class="tag">Photo Diary</p>
+        <h2>Little frames of Firdos</h2>
+      </div>
+      <div class="photo-grid">
+        <figure class="media-card tall">
+          <img class="portrait-top" src="WhatsApp Image 2026-03-26 at 21.27.25 (1).jpeg" alt="Firdos photo 1" loading="lazy">
+        </figure>
+        <figure class="media-card">
+          <img class="portrait-center" src="WhatsApp Image 2026-03-26 at 21.27.25.jpeg" alt="Firdos photo 2" loading="lazy">
+        </figure>
+        <article class="story-card love-card">
+          <p class="story-kicker">Pause Here</p>
+          <h3>Not a gallery. A collection of reasons.</h3>
+          <p>Every scroll is basically Sami admiring Firdos in a slightly more organized way.</p>
+        </article>
+        <figure class="media-card wide">
+          <img class="portrait-center" src="WhatsApp Image 2026-03-26 at 21.27.26 (1).jpeg" alt="Firdos photo 3" loading="lazy">
+        </figure>
+        <figure class="media-card">
+          <img class="portrait-top" src="WhatsApp Image 2026-03-26 at 21.27.26.jpeg" alt="Firdos photo 4" loading="lazy">
+        </figure>
+        <figure class="media-card">
+          <img class="portrait-center" src="WhatsApp Image 2026-03-26 at 21.27.27 (1).jpeg" alt="Firdos photo 5" loading="lazy">
+        </figure>
+        <figure class="media-card tall">
+          <img class="portrait-top" src="WhatsApp Image 2026-03-26 at 21.27.27 (2).jpeg" alt="Firdos photo 6" loading="lazy">
+        </figure>
+        <article class="story-card prompt-card">
+          <p class="story-kicker">Tap Me</p>
+          <h3 id="complimentBox">One tap for a compliment about you.</h3>
+          <button id="complimentButton" class="button secondary story-button">Give me one</button>
+        </article>
+        <figure class="media-card">
+          <img class="portrait-center" src="WhatsApp Image 2026-03-26 at 21.27.27.jpeg" alt="Firdos photo 7" loading="lazy">
+        </figure>
+        <figure class="media-card wide">
+          <img class="portrait-center" src="WhatsApp Image 2026-03-26 at 21.30.07.jpeg" alt="Firdos photo 8" loading="lazy">
+        </figure>
+        <figure class="media-card">
+          <img class="portrait-top" src="WhatsApp Image 2026-03-26 at 21.30.08 (1).jpeg" alt="Firdos photo 9" loading="lazy">
+        </figure>
+        <figure class="media-card">
+          <img class="portrait-center" src="WhatsApp Image 2026-03-26 at 21.30.08 (2).jpeg" alt="Firdos photo 10" loading="lazy">
+        </figure>
+        <article class="story-card tiny-letter">
+          <p class="story-kicker">Mini Letter</p>
+          <h3>Dear Firdos,</h3>
+          <p>You really do make soft things feel softer. That is your talent and also your danger. Also, your batak is very fond of you.</p>
+        </article>
+        <figure class="media-card tall">
+          <img class="portrait-top" src="WhatsApp Image 2026-03-26 at 21.30.08.jpeg" alt="Firdos photo 11" loading="lazy">
+        </figure>
+        <figure class="media-card">
+          <img class="portrait-center" src="WhatsApp Image 2026-03-26 at 21.30.12 (1).jpeg" alt="Firdos photo 12" loading="lazy">
+        </figure>
+        <figure class="media-card">
+          <img class="portrait-top" src="WhatsApp Image 2026-03-26 at 21.30.12 (2).jpeg" alt="Firdos photo 13" loading="lazy">
+        </figure>
+        <figure class="media-card">
+          <img class="portrait-center" src="WhatsApp Image 2026-03-26 at 21.30.12.jpeg" alt="Firdos photo 14" loading="lazy">
+        </figure>
+        <article class="story-card question-card">
+          <p class="story-kicker">Important Survey</p>
+          <h3>Who allowed you to be this pretty?</h3>
+          <p>The current investigation suggests: no one, you just decided to be unfairly lovely on your own.</p>
+        </article>
+        <figure class="media-card wide">
+          <img class="portrait-center" src="WhatsApp Image 2026-03-26 at 21.30.13 (1).jpeg" alt="Firdos photo 15" loading="lazy">
+        </figure>
+        <figure class="media-card">
+          <img class="portrait-top" src="WhatsApp Image 2026-03-26 at 21.30.13 (2).jpeg" alt="Firdos photo 16" loading="lazy">
+        </figure>
+        <figure class="media-card tall">
+          <img class="portrait-center" src="WhatsApp Image 2026-03-26 at 21.30.13.jpeg" alt="Firdos photo 17" loading="lazy">
+        </figure>
+        <article class="story-card countdown-card">
+          <p class="story-kicker">Final Truth</p>
+          <h3>Scroll completed.</h3>
+          <p>Verdict: still beautiful, still adorable, still Sami's favorite person to make websites for.</p>
+        </article>
+        <figure class="media-card">
+          <img class="portrait-top" src="WhatsApp Image 2026-03-26 at 21.30.15.jpeg" alt="Firdos photo 18" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <section class="panel video-section">
+      <div class="section-head">
+        <p class="tag">Moving Memories</p>
+        <h2>The moments that move too</h2>
+      </div>
+      <div class="video-grid">
+        <video controls preload="metadata" playsinline src="WhatsApp Video 2026-03-26 at 21.27.26.mp4"></video>
+        <video controls preload="metadata" playsinline src="WhatsApp Video 2026-03-26 at 21.27.27.mp4"></video>
+        <video controls preload="metadata" playsinline src="WhatsApp Video 2026-03-26 at 21.27.28.mp4"></video>
+        <video controls preload="metadata" playsinline src="WhatsApp Video 2026-03-26 at 21.30.07 (1).mp4"></video>
+        <video controls preload="metadata" playsinline src="WhatsApp Video 2026-03-26 at 21.30.07.mp4"></video>
+        <video controls preload="metadata" playsinline src="WhatsApp Video 2026-03-26 at 21.30.11.mp4"></video>
+        <video controls preload="metadata" playsinline src="WhatsApp Video 2026-03-26 at 21.30.12.mp4"></video>
+        <video controls preload="metadata" playsinline src="WhatsApp Video 2026-03-26 at 21.30.13.mp4"></video>
+        <video controls preload="metadata" playsinline src="WhatsApp Video 2026-03-26 at 21.30.14.mp4"></video>
+      </div>
+    </section>
+
+    <section class="closing panel">
+      <p class="tag">Love, Sami</p>
+      <h2>If you ever wonder how I see you, it looks a little like this page.</h2>
+      <p>
+        Full of color, full of warmth, full of moments I wanted to keep.
+        You are lovely, Firdos. That is the whole message from your batak.
+      </p>
+    </section>
+
+    <section id="secretNote" class="secret-note panel" aria-live="polite">
+      <p class="tag">Unlocked At The End</p>
+      <h2>A tiny hidden note for Firdos.</h2>
+      <p>
+        If you made it all the way here, you should know something simple:
+        making this for you made your batak smile the whole time. You are very easy to adore.
+      </p>
+      <p class="secret-signoff">Forever rooting for your smile, Sami</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
